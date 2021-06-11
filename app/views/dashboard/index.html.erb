@@ -12,17 +12,18 @@
 <body>
   <div class="row">
     <p class='mr-auto col-sm-5'>Favorite Customers</p>
+
+      <ul class='mr-auto col-sm-4'>
+        <% @top_5_customers.each do |customer| %>
+          <section id="customer-<%= customer.id %>">
+              <li><%= customer.first_name %> <%= customer.last_name %>
+              - <%= customer.number_of_transactions %> Purchases</li>
+          </section>
+        <% end %>
+      </ul>
+
     <p class='ml-auto col-sm-5'>Items Ready to Ship</p>
   </div>
- 
-  <ul class='mr-auto col-sm-4'>
-    <% @merchant.favorite_customers.each do |customer| %>
-      <section id="customer-<%= customer.id %>">
-          <li><%= customer.first_name %> <%= customer.last_name %>
-          - <%= customer.top_result %> Purchases</li>
-      </section>
-    <% end %>
-  </ul>
 
   <ul class='ml-auto col-sm-4'>
     <section id = "items_ready_to_ship" >
