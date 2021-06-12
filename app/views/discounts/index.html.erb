@@ -1,5 +1,7 @@
 <h3><%= @merchant.name %>'s Bulk Discounts</h3>
 
+<p><%= link_to 'Create Discount', new_merchant_discount_path(@merchant) %></p>
+
 <% @discounts.each do |discount| %>
   <section id="discount-<%= discount.id %>">
     <ul>
