@@ -3,6 +3,7 @@ class DiscountsController < ApplicationController
   before_action :find_merchant, except: [:show, :edit, :update]
 
   def index
+    @upcoming_holidays = Holiday.new.upcoming_holidays
     @discounts = @merchant.discounts
   end
 
