@@ -1,0 +1,4 @@
+<h3>Edit Page for <%= @discount.name %></h3>
+
+
+<%= render partial: 'form', locals: { model: [@merchant, @discount], name_value: "#{@discount.name}", discount_value: @discount.discount_percentage, quantity_value: @discount.quantity_threshold } %>
