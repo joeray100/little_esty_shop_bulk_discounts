@@ -70,4 +70,18 @@ RSpec.describe 'Discounts Index Page' do
   it "I see a link to create a new discount" do
     expect(page).to have_link('Create Discount', href: new_merchant_discount_path(@merchant1) )
   end
+
+  it "I can click a link to 'Delete Discount' and when I'm returned to the index page I no longer see that discount" do
+    expect(current_path).to eq(merchant_discounts_path(@merchant1))
+
+    within("#discount-#{@discount1.id}") do
+      expect(page).to have_link('Delete Discount', href: merchant_discount_path(@merchant1, @discount1) )
+      expect(page).to have_content(@discount1.name)
+      click_link 'Delete Discount'
+      expect(current_path).to eq(merchant_discounts_path(@merchant1))
+    end
+
+    expect(current_path).to eq(merchant_discounts_path(@merchant1))
+    expect(page).to_not have_content(@discount1.name)
+  end
 end
