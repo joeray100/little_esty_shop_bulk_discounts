@@ -10,6 +10,18 @@ class DiscountsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @discount.update(discount_params)
+      redirect_to merchant_discount_path(@merchant, @discount)
+    else
+      flash[:notice] = "Error: #{@discount.errors.full_messages.to_sentence}"
+      redirect_to edit_merchant_discount_path(@merchant, @discount)
+    end
+  end
+
   def new
     @discount = @merchant.discounts.new
   end

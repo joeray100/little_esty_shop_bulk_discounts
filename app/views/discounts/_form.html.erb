@@ -1,12 +1,27 @@
-<%= form_with model: model, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br/><br/>
+<% if params[:action] == 'edit' %>
+  <%= form_with model: model, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, name_value: name_value %><br/><br/>
 
-  <%= f.label :discount_percentage %>
-  <%= f.number_field :discount_percentage, min: 5 %><br/><br/>
+    <%= f.label :discount_percentage %>
+    <%= f.number_field :discount_percentage, min: 5, discount_value: discount_value %><br/><br/>
 
-  <%= f.label :quantity_threshold %>
-  <%= f.number_field :quantity_threshold, min: 5 %><br/><br/>
+    <%= f.label :quantity_threshold %>
+    <%= f.number_field :quantity_threshold, min: 5, quantity_value: quantity_value %><br/><br/>
 
-  <%= f.submit %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <%= form_with model: model, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br/><br/>
+
+    <%= f.label :discount_percentage %>
+    <%= f.number_field :discount_percentage, min: 5 %><br/><br/>
+
+    <%= f.label :quantity_threshold %>
+    <%= f.number_field :quantity_threshold, min: 5 %><br/><br/>
+
+    <%= f.submit %>
+  <% end %>
 <% end %>
