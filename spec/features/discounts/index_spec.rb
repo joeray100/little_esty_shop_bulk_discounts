@@ -66,4 +66,8 @@ RSpec.describe 'Discounts Index Page' do
     expect('Independence Day').to appear_before('Columbus Day')
     expect('2021-07-05').to appear_before('2021-10-11')
   end
+
+  it "I see a link to create a new discount" do
+    expect(page).to have_link('Create Discount', href: new_merchant_discount_path(@merchant1) )
+  end
 end
