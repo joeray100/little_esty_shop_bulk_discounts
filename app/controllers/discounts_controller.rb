@@ -7,6 +7,9 @@ class DiscountsController < ApplicationController
     @discounts = @merchant.discounts
   end
 
+  def show
+  end
+
   def new
     @discount = @merchant.discounts.new
   end
