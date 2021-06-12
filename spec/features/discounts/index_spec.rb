@@ -51,4 +51,19 @@ RSpec.describe 'Discounts Index Page' do
       expect(page).to have_link("#{@discount3.name}'s Show Page")
     end
   end
+
+  it "I see a section called Upcoming Holidays that shows the name and date of the next 3 upcoming US holidays" do
+    expect(page).to have_content('Upcoming Holidays')
+
+    within(".holiday") do
+      expect(page).to have_content("Independence Day, 2021-07-05")
+      expect(page).to have_content("Labour Day, 2021-09-06")
+      expect(page).to have_content("Columbus Day, 2021-10-11")
+    end
+  end
+
+  it "the next 3 upcoming US holidays are listed in order" do
+    expect('Independence Day').to appear_before('Columbus Day')
+    expect('2021-07-05').to appear_before('2021-10-11')
+  end
 end
