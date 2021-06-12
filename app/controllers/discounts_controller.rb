@@ -7,6 +7,26 @@ class DiscountsController < ApplicationController
     @discounts = @merchant.discounts
   end
 
+  def new
+    @discount = @merchant.discounts.new
+  end
+
+  def create
+    discount = @merchant.discounts.create(discount_params)
+
+    if discount.save
+      redirect_to merchant_discounts_path(@merchant)
+    else
+      flash[:notice] = "Error: #{discount.errors.full_messages.to_sentence}"
+      redirect_to new_merchant_discount_path(@merchant)
+    end
+  end
+
+  private
+  def discount_params
+    params.require(:discount).permit(:name, :discount_percentage, :quantity_threshold)
+  end
+
   def find_merchant_and_discount
     @merchant = Merchant.find(params[:merchant_id])
     @discount = @merchant.discounts.find(params[:id])
