@@ -46,7 +46,7 @@
         <section id="the-status-<%= i.id %>">
           <tr class="tr">
             <% if i.greatest_discount != nil %>
-            <td style="text-align:center"><%= link_to "Discount", merchant_discount_path(@merchant, i) %> - <%= i.item.name %></td>
+            <td style="text-align:center"><%= link_to "Discount", merchant_discount_path(@merchant, i.greatest_discount) %> - <%= i.item.name %></td>
             <td style="text-align:center"><%= i.quantity %></td>
             <td style="text-align:center">$<%= i.unit_price %></td>
             <% else %>
