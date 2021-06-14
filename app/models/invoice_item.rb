@@ -12,6 +12,8 @@ class InvoiceItem < ApplicationRecord
 
   enum status: [:pending, :packaged, :shipped]
 
+  # Best place to create 'greatest_discount' instance method due to relationship with item and merchant being of a singular nature.
+  # Based on the rules given on project page.
   def greatest_discount
     discounts
     .where('? >= quantity_threshold', quantity)
