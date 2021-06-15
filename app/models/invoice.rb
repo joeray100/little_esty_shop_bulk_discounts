@@ -12,7 +12,13 @@ class Invoice < ApplicationRecord
   enum status: [:cancelled, :in_progress, :complete]
 
   def total_revenue
-    invoice_items.sum("unit_price * quantity")
+    merchants
+    .joins(:discounts)
+    .select('invoice_items.item_id')
+    .group(:item_id)
+    .maximum('invoice_items.quantity * invoice_items.unit_price')
+    .pluck(1)
+    .sum
   end
 
   def total_discounted_revenue
@@ -33,5 +39,4 @@ class Invoice < ApplicationRecord
     .pluck(1)
     .sum
   end
-
 end
