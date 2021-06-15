@@ -22,10 +22,10 @@
     </section>
       <% end %>
   <p>Created on: <%= @invoice.created_at.strftime("%A, %B %d, %Y") %>
-  <section id="merchant-total-revenue">
+  <section id="admin-total-revenue">
     <p>Total Revenue: <%=number_to_currency( @invoice.total_revenue)%></p>
   </section>
-  <section id="merchant-total-discounted-revenue">
+  <section id="admin-total-discounted-revenue">
     <p>Total Discounted Revenue: <%=number_to_currency( @invoice.total_discounted_revenue)%></p>
   </section>
 
