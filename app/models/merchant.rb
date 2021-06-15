@@ -10,7 +10,9 @@ class Merchant < ApplicationRecord
   enum status: [:enabled, :disabled]
 
   def merchant_invoices
-    invoices.distinct
+    invoices
+    .order(:id)
+    .distinct
   end
 
   def favorite_customers
