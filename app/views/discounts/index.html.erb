@@ -14,9 +14,9 @@
   </section>
 <% end %><br>
 
-<div class="holiday">
-  <h3>Upcoming Holidays</h3>
-  <% @upcoming_holidays.each do |holiday| %>
-    <li><%= holiday[:name] %>, <%= holiday[:date] %></li>
-  <% end %>
-</div>
+  <div class="holiday">
+    <h3>Upcoming Holidays</h3>
+    <% @upcoming_holidays.each do |holiday| %>
+      <li><%= holiday[:name] %>, <%= holiday[:date] %></li>
+    <% end %>
+  </div>
