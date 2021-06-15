@@ -9,6 +9,10 @@ class Merchant < ApplicationRecord
 
   enum status: [:enabled, :disabled]
 
+  def merchant_invoices
+    invoices.distinct
+  end
+
   def favorite_customers
     transactions
     .joins(invoice: :customer)
