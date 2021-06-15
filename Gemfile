@@ -51,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem "nyan-cat-formatter"
 end
 
 # Gems for API access/use
