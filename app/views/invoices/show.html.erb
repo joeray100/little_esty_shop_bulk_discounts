@@ -18,7 +18,12 @@
   <br>
 
   <p> Created on: <%= @invoice.created_at.strftime("%A, %B %-d, %Y") %></p>
-  <p>Total Revenue: <%= @invoice.total_revenue %></p>
+  <section id="merchant-total-revenue">
+    <p>Total Revenue: <%= @invoice.total_revenue %></p>
+  </section>
+  <section id="merchant-total-discounted-revenue">
+    <p>Total Discounted Revenue: <%= @invoice.total_discounted_revenue %></p>
+  </section>
 
 
   <h4>Customer:</h4>
@@ -40,9 +45,15 @@
       <% @invoice.invoice_items.each do |i| %>
         <section id="the-status-<%= i.id %>">
           <tr class="tr">
+            <% if i.greatest_discount != nil %>
+            <td style="text-align:center"><%= link_to "Discount", merchant_discount_path(@merchant, i.greatest_discount) %> - <%= i.item.name %></td>
+            <td style="text-align:center"><%= i.quantity %></td>
+            <td style="text-align:center">$<%= i.unit_price %></td>
+            <% else %>
             <td style="text-align:center"><%= i.item.name %></td>
             <td style="text-align:center"><%= i.quantity %></td>
             <td style="text-align:center">$<%= i.unit_price %></td>
+            <% end %>
             <td style="text-align:center"><%= form_with model: @invoice, url: merchant_invoice_path(@merchant, @invoice), method: :patch do |f| %>
                                             <%= f.select :status, Invoice.statuses.keys, selected: "#{@invoice.status}" %>
                                             <%= f.submit 'Update Invoice' %>

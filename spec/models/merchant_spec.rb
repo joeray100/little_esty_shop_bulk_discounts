@@ -76,5 +76,10 @@ describe Merchant do
     it "top_5_items" do
       expect(@merchant1.top_5_items).to eq([@item_1, @item_2, @item_3, @item_8, @item_4])
     end
+
+    it "#merchant_invoices" do
+      expect(@merchant1.merchant_invoices).to eq([@invoice_1, @invoice_2, @invoice_3, @invoice_4, @invoice_5, @invoice_6, @invoice_7])
+      expect(@merchant1.merchant_invoices).to_not eq([@invoice_2, @invoice_3, @invoice_4, @invoice_5, @invoice_6, @invoice_7])
+    end
   end
 end

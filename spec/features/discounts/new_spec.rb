@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '' do
+RSpec.describe 'Merchant Discount New Page' do
   before :each do
     @merchant1 = Merchant.create!(name: 'Hair Care')
     @discount1 = @merchant1.discounts.create!(name: "10%", discount_percentage: 10, quantity_threshold: 10)
